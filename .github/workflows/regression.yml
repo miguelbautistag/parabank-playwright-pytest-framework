@@ -25,8 +25,9 @@ jobs:
           python -m pip install --upgrade pip
           pip install -r requirements.txt
 
-      - name: Install Playwright Browsers
-        run: playwright install chromium
+      - name: Install Playwright Browsers & System Dependencies
+        run: |
+          playwright install --with-deps chromium
 
       - name: Run Pytest Regression Suite with Allure
         run: |
@@ -34,7 +35,7 @@ jobs:
 
       - name: Upload Allure Test Results
         uses: actions/upload-artifact@v4
-        if: always() # Ensures artifacts upload even if some tests fail
+        if: always()
         with:
           name: allure-results
           path: allure-results/
