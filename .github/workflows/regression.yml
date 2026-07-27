@@ -27,7 +27,7 @@ jobs:
 
       - name: Install Playwright Browsers & System Dependencies
         run: |
-          npx playwright install --with-deps chromium
+          python -m playwright install --with-deps chromium
 
       - name: Run Pytest Regression Suite with Allure
         run: |
